@@ -1,4 +1,14 @@
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi aliquam
-porro atque reiciendis repudiandae tempora ad eligendi praesentium in
-sint animi ea alias ipsam dolore architecto, magni vitae. Hic,
-obcaecati.
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let item of  GifsData">
+          <div class="card h-100">
+            <img [src]="item.images.downsized_medium" class="card-img-top" alt="...">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
