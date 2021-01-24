@@ -2,13 +2,18 @@
   <div class="row">
     <div class="col col-12">
 
-      <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="row row-cols-1 row-cols-md-3 g-4 animate__animated animate__fadeIn">
         <div class="col" *ngFor="let item of  GifsData">
           <div class="card h-100">
-            <img [src]="item.images.downsized_medium" class="card-img-top" alt="...">
+            <img [src]="item.images.downsized_medium.url" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{item.title}}</h5>
+
+            </div>
 
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

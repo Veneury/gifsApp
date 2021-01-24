@@ -9,7 +9,12 @@ import { Gifs, GifsResponse } from '../interface/gifs.interface';
 export class GifsService {
   private _historial: string[] = [];
   public resultado: Gifs[] = [];
-  constructor(private _http:HttpClient) {}
+  constructor(private _http: HttpClient) {
+    this._historial = JSON.parse(localStorage.getItem('historial')!) || []
+    this.resultado = JSON.parse(localStorage.getItem('resultado')!) || []
+
+
+  }
 
   get historial() {
     return [...this._historial];
@@ -21,10 +26,13 @@ export class GifsService {
     if (!this._historial.includes(termino)) {
         this._historial.unshift(termino);
       this._historial = this._historial.slice(0, 10);
-      this._http.get<GifsResponse>(`${url}/trending?api_key=${apiKey}&q=${termino}&limit=10`).subscribe((data) => {
-        this.resultado=data.data;
-      });
+      localStorage.setItem('historial', JSON.stringify(this._historial));
     }
+    this._http.get<GifsResponse>(`${environment.url}/search?api_key=${environment.apiKey}&q=${termino}&limit=10`).subscribe((data) => {
+      this.resultado = data.data;
+      localStorage.setItem('resultado', JSON.stringify(this.resultado));
+    });
+
   }
   getGifsTrending()
   {

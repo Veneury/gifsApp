@@ -3,7 +3,9 @@
   <h3 class="text-white">GifsApp</h3>
   <div class="list-group list-reset">
     <hr class="text-white" />
-    <a *ngFor="let item of historial" href="#" class="list-group-item list-group-item-action"> {{item | titlecase}} </a>
+    <a *ngFor="let item of historial" (click)="buscar(item)" class="list-group-item list-group-item-action" style="cursor: pointer;">
+      {{ item | titlecase }}
+    </a>
   </div>
 </div>
 <!-- EndSibar -->
